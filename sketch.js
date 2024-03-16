@@ -1,14 +1,14 @@
 let bird;
 let birds;
 let des = 15;
-let tam = 30;
+let tam = 50;
 let aDist = 80;
 let cDist = 80;
 let sDist = 80;
 let MAXSPEED = 2;
 
 function setup() {
-  createCanvas(600, 450);
+  createCanvas(windowWidth, windowHeight - 50);
   angleMode(DEGREES);
   bird = new Bird(width, height, 0);
   birds = [];
@@ -17,14 +17,22 @@ function setup() {
     let y = random(0, height);
     birds[i] = new Bird(x, y, 1, 1);
   }
-  MAXSPEED = createSlider(0, 15, 3, 0);
+  MAXSPEED = createSlider(0.5, 15, 3, 0);
   aDist = createSlider(0, 150, 60, 0);
   cDist = createSlider(0, 150, 60, 0);
   sDist = createSlider(0, 150, 60, 0);
-  
-  aDist.size(100);
-  cDist.size(100);
-  sDist.size(100);
+
+  if(width < 1000) {
+    MAXSPEED.size(250)
+    aDist.size(200);
+    cDist.size(200);
+    sDist.size(200);
+  }
+  else {
+    aDist.size(100);
+    cDist.size(100);
+    sDist.size(100);
+  }
 }
 
 function draw() {
